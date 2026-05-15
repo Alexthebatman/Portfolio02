@@ -1,0 +1,188 @@
+/* global */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #0e0e10;
+  color: #e8e8e6;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* header */
+
+header {
+  text-align: center;
+  width: 100%;
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  font-size: 1rem;
+  color: #a0a09a;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* engine diagram css */
+
+.engine-diagram {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* buttons for selecting the stroke */
+
+.stroke-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.stroke-selector button {
+  background: #1c1c20;
+  color: #e8e8e6;
+  border: 2px solid #2c2c30;
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.stroke-selector button:hover {
+  background: #25252a;
+  border-color: #444;
+  transform: translateY(-1px);
+}
+
+.stroke-selector button:focus-visible {
+  outline: 2px solid #3B8BD4;
+  outline-offset: 2px;
+}
+
+.stroke-selector button.active {
+  background: #25252a;
+  border-width: 2px;
+  font-weight: 500;
+  transform: translateY(-1px);
+}
+
+.step-number {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 400;
+}
+
+.step-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* info panel for what is going on */
+
+.info-panel {
+  background: #1c1c20;
+  border: 1px solid #2c2c30;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 520px;
+  box-sizing: border-box;
+}
+
+.info-panel h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.info-panel .key-point {
+  font-weight: 500;
+  margin: 0 0 0.75rem;
+  color: #e8e8e6;
+}
+
+.info-panel .description {
+  color: #b0b0aa;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* animations */
+
+@keyframes sparkExplosion {
+  0%   { r: 4;  opacity: 0; }
+  30%  { r: 18; opacity: 0.9; }
+  60%  { r: 22; opacity: 0.5; }
+  100% { r: 28; opacity: 0; }
+}
+
+.spark-explosion {
+  animation: sparkExplosion 0.8s ease-out;
+  transform-origin: center;
+}
+
+@keyframes sparkFlash {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.spark-flash {
+  animation: sparkFlash 0.15s ease-in-out 3;
+}
+
+/* media queries */
+
+@media (max-width: 500px) {
+  .app {
+    padding: 1.5rem 0.75rem 2rem;
+  }
+
+  .stroke-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-panel {
+    padding: 1.25rem;
+  }
+}
